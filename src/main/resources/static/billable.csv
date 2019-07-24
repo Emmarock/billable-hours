@@ -1,0 +1,5 @@
+EmployeeID,Billable Rate (per hour),project,Date,Start Time,End Time
+1,300,Google,2019-07-01,09:00,17:00
+2,200,Google,2019-07-02,11:00,16:00
+3,200,Interswitch,2019-07-03,11:00,16:00
+4,400,Interswitch,2019-07-02,01:00,16:00

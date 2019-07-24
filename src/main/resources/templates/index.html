@@ -1,0 +1,73 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Billable Hours</title>
+
+    <link rel="stylesheet" th:href="@{webjars/bootstrap/4.2.1/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/main.css}"/>
+
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <a class="navbar-brand" href="#">billable-hours.com</a>
+</nav>
+
+<main role="main" class="container">
+
+    <div class="starter-template">
+        <br><br><br>
+        <h1>Billable Hours Assignment User Interface</h1>
+        <h5>Kindly upload the Time Table File for processing</h5>
+        <form method="POST" action="/index" enctype="multipart/form-data">
+            <input type="file" name="file" /><br/><br/>
+            <input type="submit" value="Upload File" />
+        </form>
+    </div>
+
+    <table>
+
+        <tbody>
+
+        <!--/*@thymesVar id="companyBillableHour" type="List<com.example.demo.model.BillableHours>"*/-->
+        <tr th:each="companyBillableHour : ${companyBillableHours}">
+            <!--/*@thymesVar id="key" type="java.lang.String"*/-->
+            <td th:text="'Company: '+ ${companyBillableHour.key}">Company</td>
+            <table>
+                <thead>
+                <!--/*@thymesVar id="companyBillableHours" type="java.util.Map<String, java.util.List<com.example.demo.model.BillableHours>>"*/-->
+                <tr th:if="${companyBillableHours}" bgcolor="#4881C4">
+                    <th> Employee Id  </th>
+                    <th> Number Of Hours </th>
+                    <th> Unit Price </th>
+                    <th> Cost </th>
+                </tr>
+                </thead>
+                <!--/*@thymesVar id="value" type="List<com.example.demo.model.BillableHours>"*/-->
+                <tr th:each="billable : ${companyBillableHour.value}">
+                    <td><span th:text="${billable.employeeId}"> Employee Id </span></td>
+                    <td><span th:text="${billable.numberOfHours}"> Number Of Hours </span></td>
+                    <td><span th:text="${billable.unitPrice}"> Unit Price</span></td>
+                    <td><span th:text="${billable.cost}"> Cost </span></td>
+                </tr>
+                <tr>
+                    <td colspan="2" />
+                    <td><span th:text="Total"> Total </span></td>
+                    <td><b th:text="${#aggregates.sum(companyBillableHour.value.![cost])}" /></td>
+                </tr>
+            </table>
+        </tr>
+        </tbody>
+    </table>
+
+</main>
+<!-- /.container -->
+
+<script type="text/javascript" th:src="@{webjars/bootstrap/4.2.1/js/bootstrap.min.js}"></script>
+</body>
+</html>
+
