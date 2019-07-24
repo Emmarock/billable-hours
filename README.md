@@ -26,13 +26,13 @@ A sample test file is associated, this can be found at src/main/resources/static
 
 The Application consist of an API endpoint and a User Interface 
 
-1. To use the API endpoint in postman, go to 
+1. To use the API endpoint in postman, Create a post request using this endpoint as the URL 
 
 * [localhost](http://localhost:8080/upload) 
-* Create a post request, with the body as form-data.
+* The request body should be of type form-data.
 * On the key interface, enter file as the name. 
 * On the value interface, select the test file above.
-* The click post.
+* Then click post.
 * The sample response will be similar to the one below 
 
         `` 
