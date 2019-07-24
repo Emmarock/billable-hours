@@ -13,7 +13,7 @@ The application shipped with an embedded tomcat server,
 you can run this application by running any of this commands on your terminal from the project root directory
 
 #### Option 1
-> spring-boot:run 
+> mvn spring-boot:run 
 
 #### Option 2
 
